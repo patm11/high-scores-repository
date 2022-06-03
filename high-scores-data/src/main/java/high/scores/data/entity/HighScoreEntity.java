@@ -4,7 +4,9 @@ public class HighScoreEntity {
     
     private PlayerEntity player;
     private GameEntity game;
+    private Long score;
     
+
     public PlayerEntity getPlayer() {
         return player;
     }
@@ -16,5 +18,11 @@ public class HighScoreEntity {
     }
     public void setGame(GameEntity game) {
         this.game = game;
+    }
+    public Long getScore() {
+        return score;
+    }
+    public void setScore(Long score) {
+        this.score = score;
     }
 }

@@ -8,4 +8,4 @@
  */
 
 rootProject.name = 'high-scores-repository'
-include 'high-scores-data'
+include 'high-scores-data', 'high-scores-common'
