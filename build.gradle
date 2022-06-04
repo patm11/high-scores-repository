@@ -1,3 +1,4 @@
 ext {
     SpringBootVersion = '2.7.0'
+    JUnitVersion = '5.8.2'
 }
