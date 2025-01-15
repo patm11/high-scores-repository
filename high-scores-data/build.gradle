@@ -2,6 +2,7 @@ plugins {
     id "java"
     id "org.springframework.boot" version "${SpringBootVersion}"
     id "io.spring.dependency-management" version "1.0.11.RELEASE"
+    id 'io.github.divinespear.jpa-schema-generate' version '0.4.0'
 }
 
 repositories {
@@ -19,6 +20,9 @@ dependencies {
     // jdbc driver
     implementation("org.postgresql:postgresql:42.2.11")
 
+    // flyway for database setup
+    implementation 'org.flywaydb:flyway-core:6.3.3'
+
     testImplementation("org.junit.jupiter:junit-jupiter-api:${JUnitVersion}")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:${JUnitVersion}")
     testImplementation("org.mockito:mockito-junit-jupiter:4.6.1")
@@ -26,4 +30,14 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+generateSchema {
+    databaseProductName = 'PostgreSQL'
+    vendor = 'hibernate'
+    scriptAction = 'create'
+    outputDirectory = file('src/main/resources/db/migration')
+    createOutputFileName = "V${System.currentTimeSeconds()}__create.sql"
+
+    packageToScan = ['high.scores.data.entity']
 }
